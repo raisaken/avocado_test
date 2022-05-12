@@ -66,6 +66,7 @@ export const AddUser = ({ onAdd }) => {
       <button className="cancel">Cancel</button>
       </div>
       <hr />
+      <p style={{marginLeft:"50px"}}>Note: could not find the api that matches the given form, so cannot update the form accordingly,Thank you</p>
     </form>
   );
 };

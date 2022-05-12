@@ -41,8 +41,6 @@ export const User = ({ username,name, email, id, onEdit, onDelete,address }) => 
           <span className="user-email">{id}</span>{" "}
           <span className="user-email">{id?'true':'false'}</span>{" "}
           <span className="user-email">{address}</span>
-
-
           <div>
             <button onClick={handleEdit}>Edit</button>
             <button onClick={handleDelete}>Delete</button>
