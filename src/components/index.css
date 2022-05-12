@@ -1,0 +1,51 @@
+.heading{
+    padding: 0 50px;
+}
+.divs {
+  margin-left: 250px;
+  position: relative;
+  padding: 25px 0 0 0;
+}
+.labels{
+    padding: 50px;
+}
+.myInputs{
+    color: rgb(132, 131, 131);
+    width: 500px;
+    border: 1px solid grey;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.createTable {
+  color: aliceblue;
+  font-weight: 600;
+  background-color: rgb(7, 47, 99);
+  border: none;
+  border-radius: 2px;
+  padding: 8px 10px;
+  margin: 5px;
+}
+.cancel {
+  color: aliceblue;
+  font-weight: 600;
+  background-color: rgb(239, 93, 52);
+  border: none;
+  border-radius: 2px;
+  padding: 8px 10px;
+  margin: 5px;
+}
+
+
+/* user list */
+
+.list{
+    margin-left: 250px;
+}
+.displayForm{
+    padding: 20px 0;
+}
+.user{
+    padding: 10px 0;
+
+}
