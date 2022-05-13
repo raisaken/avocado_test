@@ -4,9 +4,18 @@ import "./index.css";
 export const AddUser = ({ onAdd }) => {
   const handleOnSubmit = (evt) => {
     evt.preventDefault();
-    onAdd(evt.target.name.value, evt.target.email.value);
+    onAdd(
+      evt.target.select.value,
+      evt.target.name.value,
+      evt.target.myId.value,
+      evt.target.checked.value,
+      evt.target.myfile.value
+    );
+    evt.target.select.value = "";
     evt.target.name.value = "";
-    evt.target.email.value = "";
+    evt.target.myId.value = "";
+    evt.target.checked.value = "";
+    evt.target.myfile.value = "";
   };
 
   return (
@@ -17,7 +26,7 @@ export const AddUser = ({ onAdd }) => {
         <label for="cars" className="labels">
           Layout:
         </label>
-        <select name="cars" id="cars" className="myInputs">
+        <select name="select" id="select" className="myInputs">
           <option value="volvo">Select Layout</option>
           <option value="saab">Saab</option>
           <option value="opel">Opel</option>
@@ -36,37 +45,32 @@ export const AddUser = ({ onAdd }) => {
         </label>
         <input
           placeholder="Enter Number of Capacity"
-          name="email"
+          name="myId"
           className="myInputs"
-          style={{marginLeft:'-20px'}}
+          style={{ marginLeft: "-20px" }}
         />
       </div>
       <div className="divs">
         <label for="name" className="labels">
           Status:
         </label>
-        <input
-          type="checkbox"
-          name="vehicle1"
-          value="Bike"
-        />
+        <input type="checkbox" name="checked" value="true" />
       </div>
       <br />{" "}
       <div className="divs">
-
-      <label for="myfile" className="labels">
-        Image:
-      </label>
-      <input type="file" id="myfile" name="myfile" ></input>
-      </div><br />
-      <div className="divs" style={{marginLeft:'380px'}}>
-      <button onSubmit={handleOnSubmit} className="createTable">
-        Create table
-      </button>
-      <button className="cancel">Cancel</button>
+        <label for="myfile" className="labels">
+          Image:
+        </label>
+        <input type="file" id="myfile" name="myfile"></input>
+      </div>
+      <br />
+      <div className="divs" style={{ marginLeft: "380px" }}>
+        <button onSubmit={handleOnSubmit} className="createTable">
+          Create table
+        </button>
+        <button className="cancel">Cancel</button>
       </div>
       <hr />
-      <p style={{marginLeft:"50px"}}>Note: could not find the api that matches the given form, so cannot update the form accordingly,Thank you</p>
     </form>
   );
 };

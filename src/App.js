@@ -11,24 +11,28 @@ export default function App() {
   }, []);
 
   const fetchData = async () => {
-    await fetch("https://jsonplaceholder.typicode.com/users")
+    await fetch("https://jsonplaceholder.typicode.com/users/?_limit=1")
       .then((response) => response.json())
       .then((data) => setUsers(data))
       .catch((error) => console.log(error));
   };
 
-  const onAdd = async (name, email) => {
+  const onAdd = async (select, name, myId, checked, myfile) => {
     await fetch("https://jsonplaceholder.typicode.com/users", {
       method: "POST",
       body: JSON.stringify({
+        select: select,
         name: name,
-        email: email,
+        myId: myId,
+        checked: checked,
+        myfile: myfile,
       }),
       headers: {
         "Content-type": "application/json; charset=UTF-8",
       },
     })
       .then((response) => {
+        console.log(response.json());
         if (response.status !== 201) {
           return;
         } else {
@@ -40,13 +44,16 @@ export default function App() {
       })
       .catch((error) => console.log(error));
   };
-
-  const onEdit = async (id, name, email) => {
+  // console.log(users);
+  const onEdit = async (id, select, name, myId, checked, myfile) => {
     await fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
       method: "PUT",
       body: JSON.stringify({
+        select: select,
         name: name,
-        email: email,
+        myId: myId,
+        checked: checked,
+        myfile: myfile,
       }),
       headers: {
         "Content-type": "application/json; charset=UTF-8",
@@ -60,11 +67,13 @@ export default function App() {
         }
       })
       .then((data) => {
-        // setUsers((users) => [...users, data]);
         const updatedUsers = users.map((user) => {
           if (user.id === id) {
+            user.select= select;
             user.name = name;
-            user.email = email;
+            user.myId = myId;
+            user.checked =checked;
+            user.myfile=myfile;
           }
 
           return user;
@@ -98,12 +107,12 @@ export default function App() {
       <AddUser onAdd={onAdd} />
       {users.map((user) => (
         <User
-          id={user.id}
           key={user.id}
+          myId={user.myId}
           name={user.name}
-          email={user.email}
-          username={user.username}
-          address={user.address.street}
+          checked={user.checked}
+          myfile={user.myfile}
+          select={user.select}
           onEdit={onEdit}
           onDelete={onDelete}
         />
